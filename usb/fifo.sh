@@ -59,9 +59,8 @@ read -p "Enter a hostname : " hostnm
 arch-chroot /mnt echo $hostnm > /etc/hostname
 
 echo -e "\nPacman & Yaourt"
-echo -e "Uncomment \"[multilib]\" and the next line"
-read -p "Press enter to continue"
-arch-chroot /mnt nano /etc/pacman.conf
+arch-chroot /mnt sed -i '/'multilib\]'/s/^#//' /etc/pacman.conf
+arch-chroot /mnt sed -i '/\[multilib\]/ a Include = /etc/pacman.d/mirrorlist' /etc/pacman.conf
 arch-chroot /mnt echo -e "[archlinuxfr]" >> /etc/pacman.conf
 arch-chroot /mnt echo -e "SigLevel = Never" >> /etc/pacman.conf
 arch-chroot /mnt echo -e "Server = http://repo.archlinux.fr/\$arch" >> /etc/pacman.conf

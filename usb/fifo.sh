@@ -26,7 +26,7 @@ echo -e "Format \"Home\""
 sd2=$sd\2
 mkfs.ext4 -O "^has_journal" /dev/$sd2
 
-echo -e "\nMount"
+echo -e "Mount"
 echo -e "Mount \"/mnt\""
 mount /dev/$sd2 /mnt
 mkdir /mnt/boot

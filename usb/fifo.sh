@@ -47,7 +47,7 @@ genfstab -U -p /mnt >> /mnt/etc/fstab
 echo -e "\nLanguage"
 echo -e "Uncomment en_US.UTF-8"
 read -p "Press enter to continue"
-arch-chroot /mnt nano /etc/locale.gen
+arch-chroot /mnt sed -i '/'\#en_US.UTF-8'/s/^#//' /etc/locale.gen
 arch-chroot /mnt locale-gen
 arch-chroot /mnt echo LANG=en_US.UTF-8 > /etc/locale.conf
 
@@ -87,9 +87,7 @@ read -p "Press enter to continue"
 arch-chroot /mnt passwd $usr
 
 echo -e "\nVisudo"
-echo -e "Uncomment \"%wheel ALL=(ALL) ALL\" and add \"Defaults rootpw\" just after the uncommented line"
-read -p "Press enter to continue"
-arch-chroot /mnt nano /etc/sudoers
+arch-chroot /mnt sed -i '/%wheel ALL=(ALL) ALL/s/^#//' /etc/sudoers
 
 echo -e "Mkinitcpio"
 echo -e "Write \"block\" before \"autodetect\" and remove the other \"block\""

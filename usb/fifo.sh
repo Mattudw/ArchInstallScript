@@ -89,7 +89,7 @@ arch-chroot /mnt passwd $usr
 echo -e "\nVisudo"
 echo -e "Uncomment \"%wheel ALL=(ALL) ALL\" and add \"Defaults rootpw\" just after the uncommented line"
 read -p "Press enter to continue"
-arch-chroot /mnt EDITOR=nano visudo
+arch-chroot /mnt nano /etc/sudoers
 
 echo -e "\nMkinitcpio"
 echo -e "Write \"block\" before \"autodetect\" and remove the other \"block\""

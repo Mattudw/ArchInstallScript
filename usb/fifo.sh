@@ -107,7 +107,7 @@ arch-chroot /mnt grub-install --boot-directory=/boot --recheck --debug --target=
 read -r -p "Did it fail ? [Y/n]" response
 response=${response,,}
 if [[ $response =~ ^(yes|y) ]]; then
-   arch-chroot /mnt grub-install --boot-directory=/boot --recheck --debug --force --target=i386-pc /dev/$sd
+    arch-chroot /mnt grub-install --boot-directory=/boot --recheck --debug --force --target=i386-pc /dev/$sd
 fi
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 uuid=`blkid -o value -s UUID /dev/$sd2` 

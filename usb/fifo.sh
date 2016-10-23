@@ -45,11 +45,10 @@ echo -e "\nFstab"
 genfstab -U -p /mnt >> /mnt/etc/fstab
 
 echo -e "\nLanguage"
-echo -e "Uncomment en_US.UTF-8"
-read -p "Press enter to continue"
-arch-chroot /mnt sed -i '/'\#en_US.UTF-8'/s/^#//' /etc/locale.gen
+read -p "Enter the id of your country (Example : en_US, fr_FR, de_DE, ...) : " lang
+arch-chroot /mnt sed -i '/'\#$lang.UTF-8'/s/^#//' /etc/locale.gen
 arch-chroot /mnt locale-gen
-arch-chroot /mnt echo LANG=en_US.UTF-8 > /etc/locale.conf
+arch-chroot /mnt echo LANG=$lang.UTF-8 > /etc/locale.conf
 
 echo -e "\nTime"
 arch-chroot /mnt ln -s /usr/share/zoneinfo/Europe/Paris > /etc/localtime
@@ -87,7 +86,8 @@ read -p "Press enter to continue"
 arch-chroot /mnt passwd $usr
 
 echo -e "\nVisudo"
-arch-chroot /mnt sed -i '/%wheel ALL=(ALL) ALL/s/^#//' /etc/sudoers
+arch-chroot /mnt sed -i '/%wheel ALL=(ALL) ALL/s/^# //' /etc/sudoers
+arch-chroot /mnt sed -i '/%wheel ALL=(ALL) ALL/ a Defaults rootpw' /etc/sudoers
 
 echo -e "Mkinitcpio"
 echo -e "Write \"block\" before \"autodetect\" and remove the other \"block\""

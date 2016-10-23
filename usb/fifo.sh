@@ -112,5 +112,5 @@ arch-chroot /mnt echo -e "    APPEND root=UUID=$uuid ro" >> /boot/grub/menu.lst
 arch-chroot /mnt echo -e "    INITRD ../initramfs-linux.img" >> /boot/grub/menu.lst
 
 umount -R /mnt
-echo -e "\nReboot"
+read -p "Press enter to reboot"
 reboot

@@ -80,7 +80,7 @@ echo -e "Set root's password"
 read -p "Press enter to continue"
 arch-chroot /mnt passwd
 echo -e "Creation of the user"
-read -p "Enter a hostname : " usr
+read -p "Enter a username : " usr
 arch-chroot /mnt useradd -m -g users -G wheel,storage,power -s /bin/bash $usr
 echo -e "Set user's password"
 read -p "Press enter to continue"

@@ -1,8 +1,5 @@
 #!/bin/bash
-#wget https://http://pastebin.com/raw/fq8TLWRV
-#mv fq8TLWRV fifo.sh
-#sed -i -e 's/\r$//' fifo.sh
-#./fifo.sh
+#wget -O fifo.sh goo.gl/LaQnYp && bash fifo.sh
 
 echo -e "\nArch Linux on an usb key"
 

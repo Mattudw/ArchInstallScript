@@ -1,1 +1,1 @@
-# ArchScriptInstall
+# ArchInstallScript
